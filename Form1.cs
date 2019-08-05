@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -63,6 +64,20 @@ namespace Golf
                 connection.Close();
                 //add datatable to the Data Grid View
                 dgvGolf.DataSource = GolfTable;
+
+                //Clear data from Textboxes
+
+                txtID.Text = "";
+                txtTitle.Text = "";
+                txtFirstname.Text = "";
+                txtSurname.Text = "";
+                txtGender.Text = "";
+                txtDOB.Text = "";
+                txtStreet.Text = "";
+                txtSuburb.Text = "";
+                txtCity.Text = "";
+                txtAvailable.Text = "";
+                txtHandicap.Text = "";
             }
         }
 
@@ -140,6 +155,41 @@ namespace Golf
 
                 //execute insert query
                 Add_Cmd_Obj.ExecuteNonQuery();
+
+                //close connection
+                Con.Close();
+
+                MessageBox.Show("Successfully inserted new row");
+
+                //After inserting the new row reload the Data Grid View 
+                loaddb();
+            }
+        }
+
+        private void BtnUpdate_Click(object sender, System.EventArgs e)
+        {
+            //Parametered insert query
+            string UpdateQuery = "Update Golf set Title = @Title , Firstname = @Firstname, Surname =@Surname, Gender =@Gender , DOB =@DOB, Street = @Street, Suburb =@Suburb, City =@City, [Available week days] =@Available, handicap =@Handicap where ID = @ID";
+
+            using (SqlCommand Update_Cmd_Obj = new SqlCommand(UpdateQuery, Con))
+            {
+                Update_Cmd_Obj.Parameters.AddWithValue("@ID", txtID.Text);
+                Update_Cmd_Obj.Parameters.AddWithValue("@Title", txtTitle.Text);
+                Update_Cmd_Obj.Parameters.AddWithValue("@Firstname", txtFirstname.Text);
+                Update_Cmd_Obj.Parameters.AddWithValue("@Surname", txtSurname.Text);
+                Update_Cmd_Obj.Parameters.AddWithValue("@Gender", txtGender.Text);
+                Update_Cmd_Obj.Parameters.AddWithValue("@DOB", Convert.ToDateTime(txtDOB.Text));
+                Update_Cmd_Obj.Parameters.AddWithValue("@Street", txtStreet.Text);
+                Update_Cmd_Obj.Parameters.AddWithValue("@Suburb", txtSuburb.Text);
+                Update_Cmd_Obj.Parameters.AddWithValue("@City", txtCity.Text);
+                Update_Cmd_Obj.Parameters.AddWithValue("@Available", txtAvailable.Text);
+                Update_Cmd_Obj.Parameters.AddWithValue("@Handicap", txtHandicap.Text);
+
+                //open Connection
+                Con.Open();
+
+                //execute insert query
+                Update_Cmd_Obj.ExecuteNonQuery();
 
                 //close connection
                 Con.Close();
