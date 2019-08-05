@@ -168,8 +168,8 @@ namespace Golf
 
         private void BtnUpdate_Click(object sender, System.EventArgs e)
         {
-            //Parametered insert query
-            string UpdateQuery = "Update Golf set Title = @Title , Firstname = @Firstname, Surname =@Surname, Gender =@Gender , DOB =@DOB, Street = @Street, Suburb =@Suburb, City =@City, [Available week days] =@Available, handicap =@Handicap where ID = @ID";
+            //Parametered Update query
+            string UpdateQuery = "UPDATE Golf SET Title = @Title , Firstname = @Firstname, Surname =@Surname, Gender =@Gender , DOB =@DOB, Street = @Street, Suburb =@Suburb, City =@City, [Available week days] =@Available, handicap =@Handicap WHERE ID = @ID";
 
             using (SqlCommand Update_Cmd_Obj = new SqlCommand(UpdateQuery, Con))
             {
@@ -188,17 +188,87 @@ namespace Golf
                 //open Connection
                 Con.Open();
 
-                //execute insert query
+                //execute Update query
                 Update_Cmd_Obj.ExecuteNonQuery();
 
                 //close connection
                 Con.Close();
 
-                MessageBox.Show("Successfully inserted new row");
+                MessageBox.Show("Successfully Updated row");
 
-                //After inserting the new row reload the Data Grid View 
+                //After updating the row reload the Data Grid View 
                 loaddb();
             }
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            //Parametered Update query
+            string DeleteQuery = "DELETE Golf WHERE ID = @ID";
+
+            using (SqlCommand Delete_Cmd_Obj = new SqlCommand(DeleteQuery, Con))
+            {
+                Delete_Cmd_Obj.Parameters.AddWithValue("@ID", txtID.Text);
+
+                //open Connection
+                Con.Open();
+
+                //execute Update query
+                Delete_Cmd_Obj.ExecuteNonQuery();
+
+                //close connection
+                Con.Close();
+
+                MessageBox.Show("Successfully deleted row");
+
+                //After deleting the row reload the Data Grid View 
+                loaddb();
+            }
+        }
+
+        private void BtnCountMembers_Click(object sender, EventArgs e)
+        {
+            //Parametered Select query
+            string SelectCountQuery = "SELECT COUNT(ID) FROM Golf";
+
+            using (SqlCommand Select_Cmd_Obj = new SqlCommand(SelectCountQuery, Con))
+            {
+
+                //open Connection
+                Con.Open();
+
+                MessageBox.Show("Total Golfers are " + Select_Cmd_Obj.ExecuteScalar().ToString());
+
+                //close connection
+                Con.Close();
+
+
+                //After Count the new row reload the Data Grid View 
+                loaddb();
+            }
+        }
+
+        private void BtnMaleCount_Click(object sender, EventArgs e)
+        {
+            //Parametered Select query
+            string SelectMaleCountQuery = "SELECT COUNT(ID) FROM Golf WHERE Gender = 'M'";
+
+            using (SqlCommand Select_Male_Cmd_Obj = new SqlCommand(SelectMaleCountQuery, Con))
+            {
+
+                //open Connection
+                Con.Open();
+
+                MessageBox.Show("Total Male Golfers are " + Select_Male_Cmd_Obj.ExecuteScalar().ToString());
+
+                //close connection
+                Con.Close();
+
+
+                //After Count the new row reload the Data Grid View 
+                loaddb();
+            }
+
         }
     }
 }

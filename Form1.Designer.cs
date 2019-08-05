@@ -56,6 +56,7 @@
             this.BtnUpdate = new System.Windows.Forms.Button();
             this.BtnDelete = new System.Windows.Forms.Button();
             this.BtnAdd = new System.Windows.Forms.Button();
+            this.BtnMaleCount = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGolf)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,6 +77,7 @@
             this.btnCountMembers.TabIndex = 2;
             this.btnCountMembers.Text = "How Many Golfer";
             this.btnCountMembers.UseVisualStyleBackColor = true;
+            this.btnCountMembers.Click += new System.EventHandler(this.BtnCountMembers_Click);
             // 
             // txtID
             // 
@@ -283,6 +285,7 @@
             this.BtnDelete.TabIndex = 27;
             this.BtnDelete.Text = "Delete";
             this.BtnDelete.UseVisualStyleBackColor = true;
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // BtnAdd
             // 
@@ -294,11 +297,22 @@
             this.BtnAdd.UseVisualStyleBackColor = true;
             this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
+            // BtnMaleCount
+            // 
+            this.BtnMaleCount.Location = new System.Drawing.Point(713, 395);
+            this.BtnMaleCount.Name = "BtnMaleCount";
+            this.BtnMaleCount.Size = new System.Drawing.Size(75, 23);
+            this.BtnMaleCount.TabIndex = 29;
+            this.BtnMaleCount.Text = "Male Golfer";
+            this.BtnMaleCount.UseVisualStyleBackColor = true;
+            this.BtnMaleCount.Click += new System.EventHandler(this.BtnMaleCount_Click);
+            // 
             // Golf_database
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BtnMaleCount);
             this.Controls.Add(this.BtnAdd);
             this.Controls.Add(this.BtnDelete);
             this.Controls.Add(this.BtnUpdate);
@@ -365,6 +379,7 @@
         private System.Windows.Forms.Button BtnUpdate;
         private System.Windows.Forms.Button BtnDelete;
         private System.Windows.Forms.Button BtnAdd;
+        private System.Windows.Forms.Button BtnMaleCount;
     }
 }
 
