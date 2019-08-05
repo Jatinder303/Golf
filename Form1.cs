@@ -88,7 +88,7 @@ namespace Golf
             }
             catch
             {
-                MessageBox.Show("Data Table not loaded");
+                //  MessageBox.Show("Data Table not loaded");
             }
 
         }
@@ -113,7 +113,7 @@ namespace Golf
             }
             catch
             {
-                MessageBox.Show("Something is wrong");
+                //  MessageBox.Show("Something is wrong");
             }
         }
 
@@ -132,7 +132,7 @@ namespace Golf
                 Add_Cmd_Obj.Parameters.AddWithValue("@Street", txtStreet.Text);
                 Add_Cmd_Obj.Parameters.AddWithValue("@Suburb", txtSuburb.Text);
                 Add_Cmd_Obj.Parameters.AddWithValue("@City", txtCity.Text);
-                Add_Cmd_Obj.Parameters.AddWithValue("@Avaiable", txtAvailable.Text);
+                Add_Cmd_Obj.Parameters.AddWithValue("@Available", txtAvailable.Text);
                 Add_Cmd_Obj.Parameters.AddWithValue("@Handicap", txtHandicap.Text);
 
                 //open Connection
