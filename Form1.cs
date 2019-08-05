@@ -1,5 +1,4 @@
-﻿using System;
-using System.Data;
+﻿using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
@@ -20,11 +19,6 @@ namespace Golf
             InitializeComponent();
             Con.ConnectionString = connectionString;
             loaddb();
-        }
-
-        private void BtnLoad_Click(object sender, EventArgs e)
-        {
-
         }
 
         public void loaddb()
@@ -120,6 +114,40 @@ namespace Golf
             catch
             {
                 MessageBox.Show("Something is wrong");
+            }
+        }
+
+        private void BtnAdd_Click(object sender, System.EventArgs e)
+        {
+            //Parametered insert query
+            string AddQuery = "INSERT INTO Golf (Title, Firstname, Surname, Gender, DOB, Street, Suburb, City, [Available week days], handicap) VALUES (@Title, @Firstname, @Surname, @Gender, @DOB, @Street, @Suburb, @City, @Available, @Handicap)";
+
+            using (SqlCommand Add_Cmd_Obj = new SqlCommand(AddQuery, Con))
+            {
+                Add_Cmd_Obj.Parameters.AddWithValue("@Title", txtTitle.Text);
+                Add_Cmd_Obj.Parameters.AddWithValue("@Firstname", txtFirstname.Text);
+                Add_Cmd_Obj.Parameters.AddWithValue("@Surname", txtSurname.Text);
+                Add_Cmd_Obj.Parameters.AddWithValue("@Gender", txtGender.Text);
+                Add_Cmd_Obj.Parameters.AddWithValue("@DOB", txtDOB.Text);
+                Add_Cmd_Obj.Parameters.AddWithValue("@Street", txtStreet.Text);
+                Add_Cmd_Obj.Parameters.AddWithValue("@Suburb", txtSuburb.Text);
+                Add_Cmd_Obj.Parameters.AddWithValue("@City", txtCity.Text);
+                Add_Cmd_Obj.Parameters.AddWithValue("@Avaiable", txtAvailable.Text);
+                Add_Cmd_Obj.Parameters.AddWithValue("@Handicap", txtHandicap.Text);
+
+                //open Connection
+                Con.Open();
+
+                //execute insert query
+                Add_Cmd_Obj.ExecuteNonQuery();
+
+                //close connection
+                Con.Close();
+
+                MessageBox.Show("Successfully inserted new row");
+
+                //After inserting the new row reload the Data Grid View 
+                loaddb();
             }
         }
     }

@@ -291,6 +291,7 @@
             this.BtnAdd.TabIndex = 28;
             this.BtnAdd.Text = "Add";
             this.BtnAdd.UseVisualStyleBackColor = true;
+            this.BtnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // Golf_database
             // 
