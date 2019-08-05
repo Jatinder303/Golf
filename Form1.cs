@@ -64,10 +64,8 @@ namespace Golf
                 }
                 //Close Database reader
                 reader.Close();
-
                 //Close Connection
                 connection.Close();
-
                 //add datatable to the Data Grid View
                 dgvGolf.DataSource = GolfTable;
             }
