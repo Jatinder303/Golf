@@ -119,7 +119,7 @@ namespace Golf
             }
             catch
             {
-
+                MessageBox.Show("Something is wrong");
             }
         }
     }
