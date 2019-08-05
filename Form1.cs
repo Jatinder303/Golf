@@ -19,11 +19,12 @@ namespace Golf
         {
             InitializeComponent();
             Con.ConnectionString = connectionString;
+            loaddb();
         }
 
         private void BtnLoad_Click(object sender, EventArgs e)
         {
-            loaddb();
+
         }
 
         public void loaddb()
@@ -96,6 +97,30 @@ namespace Golf
                 MessageBox.Show("Data Table not loaded");
             }
 
+        }
+
+        private void DgvGolf_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                string newvalue = dgvGolf.Rows[e.RowIndex].Cells[e.ColumnIndex].Value.ToString();
+                this.Text = "Row : " + e.RowIndex.ToString() + " Col : " + e.ColumnIndex.ToString() + " Value = " + newvalue;
+                txtID.Text = dgvGolf.Rows[e.RowIndex].Cells[0].Value.ToString();
+                txtTitle.Text = dgvGolf.Rows[e.RowIndex].Cells[1].Value.ToString();
+                txtFirstname.Text = dgvGolf.Rows[e.RowIndex].Cells[2].Value.ToString();
+                txtSurname.Text = dgvGolf.Rows[e.RowIndex].Cells[3].Value.ToString();
+                txtGender.Text = dgvGolf.Rows[e.RowIndex].Cells[4].Value.ToString();
+                txtDOB.Text = dgvGolf.Rows[e.RowIndex].Cells[5].Value.ToString();
+                txtStreet.Text = dgvGolf.Rows[e.RowIndex].Cells[6].Value.ToString();
+                txtSuburb.Text = dgvGolf.Rows[e.RowIndex].Cells[7].Value.ToString();
+                txtCity.Text = dgvGolf.Rows[e.RowIndex].Cells[8].Value.ToString();
+                txtAvailable.Text = dgvGolf.Rows[e.RowIndex].Cells[9].Value.ToString();
+                txtHandicap.Text = dgvGolf.Rows[e.RowIndex].Cells[10].Value.ToString();
+            }
+            catch
+            {
+
+            }
         }
     }
 }
