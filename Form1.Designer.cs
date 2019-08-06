@@ -57,6 +57,8 @@
             this.BtnDelete = new System.Windows.Forms.Button();
             this.BtnAdd = new System.Windows.Forms.Button();
             this.BtnMaleCount = new System.Windows.Forms.Button();
+            this.Btn_Load = new System.Windows.Forms.Button();
+            this.BtnHandicap = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvGolf)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,7 +73,7 @@
             // 
             // btnCountMembers
             // 
-            this.btnCountMembers.Location = new System.Drawing.Point(604, 392);
+            this.btnCountMembers.Location = new System.Drawing.Point(604, 368);
             this.btnCountMembers.Name = "btnCountMembers";
             this.btnCountMembers.Size = new System.Drawing.Size(101, 28);
             this.btnCountMembers.TabIndex = 2;
@@ -260,18 +262,19 @@
             // 
             // BtnStore
             // 
-            this.BtnStore.Location = new System.Drawing.Point(604, 329);
+            this.BtnStore.Location = new System.Drawing.Point(604, 415);
             this.BtnStore.Name = "BtnStore";
-            this.BtnStore.Size = new System.Drawing.Size(75, 23);
+            this.BtnStore.Size = new System.Drawing.Size(113, 23);
             this.BtnStore.TabIndex = 25;
-            this.BtnStore.Text = "Store";
+            this.BtnStore.Text = "Gender Golfer Store";
             this.BtnStore.UseVisualStyleBackColor = true;
+            this.BtnStore.Click += new System.EventHandler(this.BtnStore_Click);
             // 
             // BtnUpdate
             // 
-            this.BtnUpdate.Location = new System.Drawing.Point(685, 329);
+            this.BtnUpdate.Location = new System.Drawing.Point(666, 329);
             this.BtnUpdate.Name = "BtnUpdate";
-            this.BtnUpdate.Size = new System.Drawing.Size(75, 23);
+            this.BtnUpdate.Size = new System.Drawing.Size(57, 23);
             this.BtnUpdate.TabIndex = 26;
             this.BtnUpdate.Text = "Update";
             this.BtnUpdate.UseVisualStyleBackColor = true;
@@ -279,9 +282,9 @@
             // 
             // BtnDelete
             // 
-            this.BtnDelete.Location = new System.Drawing.Point(604, 363);
+            this.BtnDelete.Location = new System.Drawing.Point(604, 330);
             this.BtnDelete.Name = "BtnDelete";
-            this.BtnDelete.Size = new System.Drawing.Size(75, 23);
+            this.BtnDelete.Size = new System.Drawing.Size(53, 23);
             this.BtnDelete.TabIndex = 27;
             this.BtnDelete.Text = "Delete";
             this.BtnDelete.UseVisualStyleBackColor = true;
@@ -289,9 +292,9 @@
             // 
             // BtnAdd
             // 
-            this.BtnAdd.Location = new System.Drawing.Point(685, 363);
+            this.BtnAdd.Location = new System.Drawing.Point(729, 330);
             this.BtnAdd.Name = "BtnAdd";
-            this.BtnAdd.Size = new System.Drawing.Size(75, 23);
+            this.BtnAdd.Size = new System.Drawing.Size(60, 23);
             this.BtnAdd.TabIndex = 28;
             this.BtnAdd.Text = "Add";
             this.BtnAdd.UseVisualStyleBackColor = true;
@@ -299,19 +302,41 @@
             // 
             // BtnMaleCount
             // 
-            this.BtnMaleCount.Location = new System.Drawing.Point(713, 395);
+            this.BtnMaleCount.Location = new System.Drawing.Point(713, 368);
             this.BtnMaleCount.Name = "BtnMaleCount";
-            this.BtnMaleCount.Size = new System.Drawing.Size(75, 23);
+            this.BtnMaleCount.Size = new System.Drawing.Size(75, 28);
             this.BtnMaleCount.TabIndex = 29;
             this.BtnMaleCount.Text = "Male Golfer";
             this.BtnMaleCount.UseVisualStyleBackColor = true;
             this.BtnMaleCount.Click += new System.EventHandler(this.BtnMaleCount_Click);
+            // 
+            // Btn_Load
+            // 
+            this.Btn_Load.Location = new System.Drawing.Point(722, 415);
+            this.Btn_Load.Name = "Btn_Load";
+            this.Btn_Load.Size = new System.Drawing.Size(66, 23);
+            this.Btn_Load.TabIndex = 30;
+            this.Btn_Load.Text = "Load Data";
+            this.Btn_Load.UseVisualStyleBackColor = true;
+            this.Btn_Load.Click += new System.EventHandler(this.Btn_Load_Click);
+            // 
+            // BtnHandicap
+            // 
+            this.BtnHandicap.Location = new System.Drawing.Point(457, 415);
+            this.BtnHandicap.Name = "BtnHandicap";
+            this.BtnHandicap.Size = new System.Drawing.Size(122, 23);
+            this.BtnHandicap.TabIndex = 31;
+            this.BtnHandicap.Text = "Handicap Golfers";
+            this.BtnHandicap.UseVisualStyleBackColor = true;
+            this.BtnHandicap.Click += new System.EventHandler(this.BtnHandicap_Click);
             // 
             // Golf_database
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.BtnHandicap);
+            this.Controls.Add(this.Btn_Load);
             this.Controls.Add(this.BtnMaleCount);
             this.Controls.Add(this.BtnAdd);
             this.Controls.Add(this.BtnDelete);
@@ -380,6 +405,8 @@
         private System.Windows.Forms.Button BtnDelete;
         private System.Windows.Forms.Button BtnAdd;
         private System.Windows.Forms.Button BtnMaleCount;
+        private System.Windows.Forms.Button Btn_Load;
+        private System.Windows.Forms.Button BtnHandicap;
     }
 }
 

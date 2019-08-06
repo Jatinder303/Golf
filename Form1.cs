@@ -268,7 +268,121 @@ namespace Golf
                 //After Count the new row reload the Data Grid View 
                 loaddb();
             }
+        }
 
+        private void BtnStore_Click(object sender, EventArgs e)
+        {
+            GolfTable.Clear();
+            using (SqlCommand Store_Cmd_Obj = Con.CreateCommand())
+            {
+                Store_Cmd_Obj.CommandText = "GolferGender";
+                Store_Cmd_Obj.CommandType = CommandType.StoredProcedure;
+                Store_Cmd_Obj.Parameters.AddWithValue("@Gender", txtGender.Text);
+
+                Con.Open();
+                //Start Database reader
+                SqlDataReader reader = Store_Cmd_Obj.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    //add each row in datatable
+                    GolfTable.Rows.Add(
+                                reader["ID"],
+                                reader["Title"],
+                                reader["FirstName"],
+                                reader["Surname"],
+                                reader["Gender"],
+                                reader["DOB"],
+                                reader["Street"],
+                                reader["Suburb"],
+                                reader["City"],
+                                reader["Available Week Days"],
+                                reader["Handicap"]
+                                );
+
+                }
+                //Close Database reader
+                reader.Close();
+                //Close Connection
+                Con.Close();
+                //add datatable to the Data Grid View
+                dgvGolf.DataSource = GolfTable;
+
+                //Clear data from Textboxes
+
+
+                txtID.Text = "";
+                txtTitle.Text = "";
+                txtFirstname.Text = "";
+                txtSurname.Text = "";
+                txtGender.Text = "";
+                txtDOB.Text = "";
+                txtStreet.Text = "";
+                txtSuburb.Text = "";
+                txtCity.Text = "";
+                txtAvailable.Text = "";
+                txtHandicap.Text = "";
+            }
+        }
+
+        private void Btn_Load_Click(object sender, EventArgs e)
+        {
+            loaddb();
+        }
+
+        private void BtnHandicap_Click(object sender, EventArgs e)
+        {
+            GolfTable.Clear();
+            using (SqlCommand Store_Cmd_Obj = Con.CreateCommand())
+            {
+                Store_Cmd_Obj.CommandText = "HandicapGolfers";
+                Store_Cmd_Obj.CommandType = CommandType.StoredProcedure;
+                Store_Cmd_Obj.Parameters.AddWithValue("@Handicap", txtHandicap.Text);
+
+                Con.Open();
+                //Start Database reader
+                SqlDataReader reader = Store_Cmd_Obj.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    //add each row in datatable
+                    GolfTable.Rows.Add(
+                                reader["ID"],
+                                reader["Title"],
+                                reader["FirstName"],
+                                reader["Surname"],
+                                reader["Gender"],
+                                reader["DOB"],
+                                reader["Street"],
+                                reader["Suburb"],
+                                reader["City"],
+                                reader["Available Week Days"],
+                                reader["Handicap"]
+                                );
+
+                }
+                //Close Database reader
+                reader.Close();
+                //Close Connection
+                Con.Close();
+                //add datatable to the Data Grid View
+                dgvGolf.DataSource = GolfTable;
+
+                //Clear data from Textboxes
+
+
+                txtID.Text = "";
+                txtTitle.Text = "";
+                txtFirstname.Text = "";
+                txtSurname.Text = "";
+                txtGender.Text = "";
+                txtDOB.Text = "";
+                txtStreet.Text = "";
+                txtSuburb.Text = "";
+                txtCity.Text = "";
+                txtAvailable.Text = "";
+                txtHandicap.Text = "";
+            }
         }
     }
 }
